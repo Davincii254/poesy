@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Module 4 Code Challenge: Poesy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-## Available Scripts
+Use this gif as an example of how the app should work.
 
-In the project directory, you can run:
+![Demo GIF](./demo.gif)
 
-### `npm start`
+## Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Welcome to Poesy, where your poetry masterpieces come to life! Our old front-end team laid down the foundations for our app, but it looks like they forgot all the functionality!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Your job will be to make our app work according to the user stories you will find the [Core Deliverables](#Core-Deliverables) section.
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After unbundling the project:
 
-### `npm run build`
+1. Run `npm install` in your terminal.
+2. Run `npm run server`. This will run your backend on port `8004`.
+3. In a new terminal, run `npm start`. This will run your React app on port `8000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Make sure to open [http://localhost:8004/poems](http://localhost:8004/poems) in the browser to verify that your backend is working before you proceed!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The base URL for your backend is: `http://localhost:8004`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Core Deliverables
 
-### `npm run eject`
+As a user:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. When the app starts, I can see all currently created poems.
+2. I can show/hide the form to create new poems.
+3. I can create poems and they are still there when I refresh the page.
+4. I can mark poems as read which will change the text of that button to "Mark as unread".
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Endpoints for Core Deliverables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### GET /poems
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Example Response:
 
-## Learn More
+```json
+[
+  {
+    "id": 1,
+    "title": "The Song About the Song",
+    "content": "This is the song about the show...",
+    "author": "Bryan Higgins"
+  },
+  {
+    "id": 2,
+    "title": "My Pickle",
+    "content": "...may my pickle stroll about hungry ...",
+    "author": "Jon Glass"
+  }
+]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### POST `/poems`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Required Headers:
 
-### Code Splitting
+```js
+{
+  "Content-Type": "application/json"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Request Object:
 
-### Analyzing the Bundle Size
+```json
+{
+  "title": "string",
+  "content": "string",
+  "author": "string"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Example Response:
 
-### Making a Progressive Web App
+```json
+{
+  "id": 1,
+  "title": "The Song About the Song",
+  "content": "This is the song about the show...",
+  "author": "Bryan Higgins"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Advanced Deliverables
 
-### Advanced Configuration
+These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> Note: If you are going to attempt these advanced deliverables, please be sure to have a working commit with all the Core Deliverables first!
 
-### Deployment
+As a user:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. I can add a poem to my favorites and see it on a separate list.
+2. I can delete a poem and they are still gone when I refresh the page.
 
-### `npm run build` fails to minify
+### Endpoints for Advanced Deliverables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### DELETE /poems/:id
+
+Example Response:
+
+```json
+{}
+```
