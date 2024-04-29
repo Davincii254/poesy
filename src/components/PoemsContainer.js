@@ -1,19 +1,22 @@
 import React from "react";
 import Poem from "./Poem";
 
-function PoemsContainer({poems, removePoem, addToFavorites}) {
+// Component responsible for rendering a list of poems
+function PoemsContainer({ poems, removePoem, addToFavorites }) {
   return (
     <div className="poems-container">
-      {poems.map(poem => {
+      {/* Iterate over each poem in the 'poems' array */}
+      {poems.map((poem) => {
         return (
-          <Poem 
-            key={poem.id} 
-            poem={poem} 
-            removePoem={removePoem} 
-            addToFavorites={addToFavorites} 
+          // Render the Poem component for each poem
+          <Poem
+            key={poem.id} // Unique key required for each list item
+            poem={poem} // Pass the current poem object as a prop
+            removePoem={removePoem} // Pass the removePoem function as a prop
+            addToFavorites={addToFavorites} // Pass the addToFavorites function as a prop
           />
-        )
-        })}
+        );
+      })}
     </div>
   );
 }
